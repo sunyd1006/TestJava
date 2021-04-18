@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="Java-Basic" />
+        <module name="demo" />
+        <module name="spring-32-mybatis-onemany" />
+        <module name="spring-13-transaction" />
+        <module name="spring-08-appconfig" />
+        <module name="spring-10-proxy" />
+        <module name="Svm-code" />
+        <module name="spring-33-mybatis-dynamic-sql" />
+        <module name="spring-34-mybatis-cache" />
+        <module name="spring-32-mybatis-manyone" />
+        <module name="spring-07-autowired" />
+        <module name="jedis-study" />
+        <module name="Leetcode" />
+        <module name="spring-30-mybatis-helloworld" />
+        <module name="springboot-redis" />
+        <module name="spring-01-helloworld" />
+        <module name="spring-31-mybatis-config" />
+        <module name="spring-08-anno" />
+        <module name="java-basic" />
+        <module name="spring-12-mybatis" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="java-00-basic" target="8" />
+      <module name="java-socket-server" target="12" />
+      <module name="Jedis-Study" target="1.5" />
+      <module name="spring-00-test" target="8" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="demo" options="-parameters" />
+      <module name="springboot-redis" options="-parameters" />
+    </option>
+  </component>
+</project>

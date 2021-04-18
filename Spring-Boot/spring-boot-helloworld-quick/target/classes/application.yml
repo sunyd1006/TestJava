@@ -1,0 +1,27 @@
+server:
+    port: 8081
+spring:
+  profiles:
+    active: dev
+
+person:
+  name: sunyd
+  full-name: sun yin dong
+  age: 12
+  dog:
+    name: sun's dog
+    age: 12
+
+---
+server:
+  port: 8083
+
+spring:
+  profiles: dev
+
+---
+server:
+  port: 8084
+
+spring:
+  profiles: prod

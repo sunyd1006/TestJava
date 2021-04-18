@@ -1,0 +1,32 @@
+{
+  "groups": [
+    {
+      "name": "person",
+      "type": "com.syd.springboot.bean.TestConfigurationProperties",
+      "sourceType": "com.syd.springboot.bean.TestConfigurationProperties"
+    }
+  ],
+  "properties": [
+    {
+      "name": "person.age",
+      "type": "java.lang.Integer",
+      "sourceType": "com.syd.springboot.bean.TestConfigurationProperties"
+    },
+    {
+      "name": "person.dog",
+      "type": "com.syd.springboot.bean.Dog",
+      "sourceType": "com.syd.springboot.bean.TestConfigurationProperties"
+    },
+    {
+      "name": "person.full-name",
+      "type": "java.lang.String",
+      "sourceType": "com.syd.springboot.bean.TestConfigurationProperties"
+    },
+    {
+      "name": "person.name",
+      "type": "java.lang.String",
+      "sourceType": "com.syd.springboot.bean.TestConfigurationProperties"
+    }
+  ],
+  "hints": []
+}

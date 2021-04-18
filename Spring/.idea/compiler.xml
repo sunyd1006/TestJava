@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="spring-32-mybatis-manyone" />
+        <module name="spring-34-mybatis-cache" />
+        <module name="spring-07-autowired" />
+        <module name="spring-32-mybatis-onemany" />
+        <module name="spring-30-mybatis-helloworld" />
+        <module name="spring-13-transaction" />
+        <module name="spring-00-test" />
+        <module name="spring-01-helloworld" />
+        <module name="spring-31-mybatis-config" />
+        <module name="spring-08-appconfig" />
+        <module name="spring-10-proxy" />
+        <module name="spring-08-anno" />
+        <module name="Svm-code" />
+        <module name="java-00-basic" />
+        <module name="spring-12-mybatis" />
+        <module name="spring-33-mybatis-dynamic-sql" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel target="12">
+      <module name="java-00" target="12" />
+      <module name="test" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>
