@@ -16,7 +16,6 @@ public class Ali {
         Scanner sc = new Scanner(System.in);
         while (sc.hasNext()) {
             numberRes.clear();
-            
             int m = sc.nextInt();
             int n = sc.nextInt();
             sc.nextLine();      // 去换行

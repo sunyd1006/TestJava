@@ -12,8 +12,6 @@ public class Mytest {
 //      2  @Component ：标注User类
 //            @Value： 定义值
 //       就可以自动装配了
-
-
         System.out.println(context.getBean("user", User.class).toString());
     }
 }
