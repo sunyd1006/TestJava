@@ -6,10 +6,6 @@ import org.junit.jupiter.params.provider.ValueSource;
 import java.io.*;
 import java.util.*;
 
-import com.lee.TreeNode;
-import com.lee.ListNode;
-import com.lee.Node;
-
 public class TestFunction {
     
     public static void main(String[] args) throws IOException {
