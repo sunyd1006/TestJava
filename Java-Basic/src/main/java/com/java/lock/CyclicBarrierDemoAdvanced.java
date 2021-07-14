@@ -49,3 +49,14 @@ public class CyclicBarrierDemoAdvanced {
 
 }
 
+// threadnum:0is ready
+// threadnum:1is ready
+// threadnum:2is ready
+// threadnum:3is ready
+// threadnum:4is ready
+// ------当线程数达到之后，优先执行------
+// threadnum:4is finish
+// threadnum:0is finish
+// threadnum:1is finish
+// threadnum:3is finish
+// threadnum:2is finish

@@ -5,18 +5,10 @@ import java.util.Date;
 import java.util.concurrent.*;
 
 /**
- * 测试：Callable的返回值！！！
+ * 测试：Callable 接口， 并用线程池调用
  * 参考：https://www.cnblogs.com/syp172654682/p/9788051.html
  */
-
-/* 
- * @Author: sunyd 
- * @Description:  
- * @Date: 2021/1/4 22:34 
- * @Param:  
- * @return:  
- **/
-public class CallableTest {
+public class CallableDemo {
     public static void main(String[] args) throws InterruptedException, ExecutionException {
         ExecutorService executor = Executors.newFixedThreadPool(2);
 
@@ -25,15 +17,13 @@ public class CallableTest {
             @Override
             public String call() throws Exception {
                 Thread.sleep(3000);
-                System.out.println("calld方法执行了");
-                return "[Callable return!]";
+                System.out.println("call 方法执行了");
+                return " [ Callable return! ] ";
             }
         };
         
         System.out.println("提交任务之前 " + getStringDate());
         Future future = executor.submit(myCallable);
-
-
         System.out.println("提交任务之后，获取结果之前 " + getStringDate());
         System.out.println("获取返回值: " + future.get());
         System.out.println("获取到结果之后 " + getStringDate());
@@ -45,6 +35,5 @@ public class CallableTest {
         String dateString = formatter.format(currentTime);
         return dateString;
     }
-
 }
 

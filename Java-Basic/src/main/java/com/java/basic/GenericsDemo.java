@@ -23,6 +23,12 @@ public class GenericsDemo {
         System.out.println(list);
     }
 
+    /**
+     * ？ 表示不确定的 java 类型
+     * T (type) 表示具体的一个java类型
+     * K V (key value) 分别代表java键值中的Key Value
+     * E (element) 代表Element e
+     */
     private <T> void test(List<? super T> dst, List<T> src){
         for (T t : src) {
             dst.add(t);
