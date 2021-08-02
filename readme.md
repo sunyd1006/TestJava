@@ -44,9 +44,18 @@ ASYNCHRONOUS
 You are in a restaurant with many other people. You order your food. Other people can also order their food, they don't have to wait for your food to be cooked and served to you before they can order. In the kitchen restaurant workers are continuously cooking, serving, and taking orders. People will get their food served as soon as it is cooked.
 ```
 
-# 什么是双核四线程
-> CPU双核，是指2个物理核心，4线程，是可以当作4个逻辑核使用（1个物理核心超线程为2个逻辑核心）
-> 实际上1个物核心，还是只有1个线程可以在1个时间片里，可以跑2个线程的代码，但是有竞争条件；不是一定能跑2个线程的代码的。
+
+
+# 线程安全
+- 至少2个线程修改统一变量时才会出现线程安全的问题。
+
+
+# synchronized 和 volatile 区别使用
+- 进入synchronized代码块，会获取 Obj 的监视器锁，然后执行同步代码快。相当于读 volatile 变量
+- 退出synchronized代码，或释放获取到的obj的锁，并把同步块内的变量协会主内存（不是cache1,cache2),以保证可见性
+- volatile不保证原子性，即不能执行读取-修改-存储类型的操作（因为汇编不是一条语句），比如i++;
+- ReentrantLock 示例，和 ReadWriteLock 示例
+
 
 # wait VS blocked
 ```java
@@ -65,10 +74,6 @@ Once other threads have left and its this thread chance, it moves to Runnable st
 
 # Java线程6种状态
 Java中线程的状态分为6种。
-孙总结：
-- 只有wait释放对象锁，sleep, yeild不释放
-- sleep, yeild是让出cpu, 进入阻塞状态。
-
 
 
 
@@ -137,6 +142,45 @@ LockSupport.park()/LockSupport.parkNanos(long nanos),LockSupport.parkUntil(long 
 等待队列里许许多多的线程都wait()在一个对象上，此时某一线程调用了对象的notify()方法，那唤醒的到底是哪个线程？随机？队列FIFO？or sth else？Java文档就简单的写了句：选择是任意性的（The choice is arbitrary and occurs at the discretion of the implementation）。
 
 
+# 孙总结：
+- 只有wait释放对象锁，sleep, yeild不释放
+- wait: 只释放**锁，会阻塞当前（自己）这个线程，
+   - resourceA.wait(), 只会释放resourceA，但不会释放其他资源
+```java
+sychronized(resourceA){
+     sychronized(resourceB){
+         resourceA.wait(); // 只释放resourceA, 不释放resourceB
+     }
+}
+```
+
+- sleep: yeild是让出cpu, 进入阻塞状态不进行调度，sleep完后开始进行调度
+  
+- wait, sleep 中端都会报 InterruptedException 
+- yeild: 不释放锁，不会阻塞自己但出让CPU权限（会促发CPU调度），但可能调度结果还是自己
+
+- join: 等待指定线程执行完毕
+
+
+# 1.8 终端线程
+```java
+threadA.interrupt();     // 中端threadA
+threadA.isInterrupted();  // 获取threadA的状态
+
+        
+Thread.interrupted():   // 获取当前线程并重置位为false（Main中的代码是Main线程，在threadA中就是threadA)
+threadA.interrupted();  // 不要这么写，容易混淆
+```
+
+# 守护线程和非守护线程
+- user: main 线程，all user线程 都运行结束后，JVM会自动退出
+- daemon: 守护线程，比如GC之类的
+- jsp 可以查看JVM的线程，进程状态；
+
+# ThreadLocal VS InheritedThreadLocal
+- InheritedThreadLocal 是父子线程继承的ThreadLocal
+- Thread 里有 threadLocal, 他是ThreadLocalMap, threadLocal 的key是线程引用，Map的value是
+
 # obj.notify 后的过程：
 - 唤醒被该obj阻塞的thread，唤醒那一个，就看随机
 - 被唤醒的thread，还要等者进入sychronized的权限
@@ -146,7 +190,7 @@ LockSupport.park()/LockSupport.parkNanos(long nanos),LockSupport.parkUntil(long 
 - 子线程在睡眠期间，主线程中断了它，所以子线程在调用sleep方法处抛出了InterruptedException异常
 - 在调用Thread.sleep(long  millis)时为millis参数传递了一个负数，则会抛出IllegalArgumentException异常
 ```java
-try{
+try {
    Thead.sleep(1000);
 }catch (InterruptedException e) {
    e.printStackTrace();
@@ -158,7 +202,7 @@ try{
 
 
 
-this 关键字
+# this 关键字
 - https://www.yiibai.com/java/this-keyword.html
 this关键字可用来引用当前类的实例变量。
 this关键字可用于调用当前类方法(隐式)。

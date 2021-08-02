@@ -1,7 +1,7 @@
 package com.java.javabeauty;
 
 
-import org.junit.Test;
+import org.testng.annotations.Test;
 
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutionException;
@@ -14,14 +14,16 @@ public class CallableTaskDemo implements Callable<String> {
     @Override
     public String call() throws Exception {
         try {
-            sleep(5000);
+            sleep(3000);
         }catch (Exception e){
             e.printStackTrace();
         }
-        return "hello";
+        return "CallableReturnResult";
     }
 
-    public static void main(String[] args) throws InterruptedException {
+    // 测试 Callable 返回结果
+    @Test
+    public static void testCallableTask() throws InterruptedException {
         // 创建异步任务
         FutureTask<String> futureTask = new FutureTask<>(new CallableTaskDemo());
         // 启动线程
@@ -34,7 +36,6 @@ public class CallableTaskDemo implements Callable<String> {
             e.printStackTrace();
         }
     }
-
 
     // 创建资源
     private static volatile Object resourceA = new Object();
@@ -92,9 +93,11 @@ public class CallableTaskDemo implements Callable<String> {
         threadB.join();
         System.out.println("main over");
     }
-
+    /**
+     * 测试 join ： join， 等待其他线程运行完毕，比如在Main中写one.join(), Main等one运行完毕
+     */
     @Test
-    public static void test2() {
+    public static void testJoin() {
         //线程one
         Thread threadOne = new Thread(new Runnable() {
             @Override

@@ -16,8 +16,7 @@ public class Main {
         
         while (sc.hasNext()) {
             // sc.nextLine() 读取掉换行符
-            
-            
+
         }
     }
     
