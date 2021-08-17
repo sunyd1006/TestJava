@@ -1,4 +1,4 @@
-package com.java.designpattern;
+package com.design;
 
 import java.util.*;
 import java.util.concurrent.atomic.AtomicInteger;

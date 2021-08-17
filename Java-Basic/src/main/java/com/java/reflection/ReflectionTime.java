@@ -1,7 +1,5 @@
 package com.java.reflection;
 
-import org.springframework.context.support.ClassPathXmlApplicationContext;
-
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 

@@ -1,4 +1,4 @@
-package com.java.designpattern;
+package com.design;
 
 import java.util.LinkedList;
 import java.util.Queue;

@@ -1,7 +1,7 @@
 package com.java.javabeauty;
 
 
-import org.testng.annotations.Test;
+import org.junit.Test;
 
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutionException;
@@ -134,5 +134,4 @@ public class CallableTaskDemo implements Callable<String> {
             System.out.println("main thread:" + e);
         }
     }
-
 }
