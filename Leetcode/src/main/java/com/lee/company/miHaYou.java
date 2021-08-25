@@ -1,10 +1,11 @@
-package com.lee;
+package com.lee.company;
 
 
 import java.io.IOException;
 import java.util.Scanner;
 import java.util.Stack;
 
+// 米哈游 第1次 mihayou
 public class miHaYou {
   public static void main(String[] args) throws IOException {
     // Scanner sc = new Scanner(new File("/Users/sunyindong/workspace/ForWork/Leetcode/src/main/resources/input.txt"));

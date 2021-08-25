@@ -1,39 +1,14 @@
 package com.online;
 
-
-import java.io.*;
-import java.util.*;
+import java.io.IOException;
+import java.util.Deque;
+import java.util.LinkedList;
+import java.util.Scanner;
 
 public class Main {
-  public static void main(String[] args) throws IOException {
-    // Scanner sc = new Scanner(new File("/Users/sunyindong/workspace/ForWork/Leetcode/src/main/resources/input.txt"));
-    Scanner sc = new Scanner(System.in);
-    int t = sc.nextInt();
-    sc.nextLine();
-    while ((t--) > 0) {
-      String line = sc.nextLine();
-      boolean ab = isAB(line);
-      if(ab){
-        System.out.println("YES");
-      }else{
-        System.out.println("NO");
-      }
-    }
-  }
+    public static void main(String[] args) throws IOException {
+        // Scanner sc = new Scanner(new File("/Users/sunyindong/workspace/ForWork/Leetcode/src/main/resources/input.txt"));
+        Scanner sc = new Scanner(System.in);
 
-  public static boolean isAB(String name) {
-    Stack<Character> stack = new Stack<>();
-    for (int i = 0; i < name.length(); i++) {
-      char curChar = name.charAt(i);
-      boolean isContinue = false;
-      while (!stack.isEmpty() && stack.peek().equals('a') && curChar == 'b') {
-        stack.pop();
-        isContinue = true;
-        break;
-      }
-      if (isContinue) continue;
-      stack.push(curChar);
     }
-    return stack.isEmpty();
-  }
 }
