@@ -4,6 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 // https://www.runoob.com/design-pattern/observer-pattern.html
+
+/**
+ * - 1个对象 Subject 有很多个观察者；有1个状态资源；1个通知观察者执行的方案 notifyAll
+ * - 1个观察者，有1个观察的对象；1个执行方案 update
+ */
 public class ObserverPatternDemo {
   public static void main(String[] args) {
     Subject subject = new Subject();
