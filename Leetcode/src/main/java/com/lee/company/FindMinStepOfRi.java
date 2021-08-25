@@ -4,7 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.*;
 
-// todo find min of 日
+// find min of 日
 public class FindMinStepOfRi {
     public static void main(String[] args) throws IOException {
         // Scanner sc = new Scanner(System.in);
@@ -82,7 +82,7 @@ public class FindMinStepOfRi {
     public static int count;
     public static boolean findTarget(char[][] board, int i, int j){
         if(board==null ||  board.length==0 || board[0].length==0 || i< 0 || i>=board.length || j<0 || j>=board[0].length
-                 || board[i][j] == '#') {    // todo
+                 || board[i][j] == '#') {    //
             return false;
         }
         if(board[i][j]=='T'){

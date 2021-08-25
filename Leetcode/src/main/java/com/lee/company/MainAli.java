@@ -1,17 +1,17 @@
 package com.lee.company;
 
-public class StackDemo {
+public class MainAli {
     int[] stack;
     int capacity;
     int size;
     int ptr;
-    StackDemo(){
+    MainAli(){
         capacity = 2;
         stack = new int[capacity];
         size = 0;
         ptr = 0;
     }
-    StackDemo(int capacity) throws StackException {
+    MainAli(int capacity) throws StackException {
         if(capacity<=0 ) throw new StackException("Capactiy must be positve! ");
         this.capacity = capacity;
         stack = new int[capacity];
@@ -39,7 +39,7 @@ public class StackDemo {
     }
 
     public static void main(String[] args) throws StackException {
-        StackDemo demo = new StackDemo(2);
+        MainAli demo = new MainAli(2);
 
 //        case 1, capacity = 0
 //        StackDemo demo = new StackDemo(0);
