@@ -5,11 +5,19 @@ import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
-// https://leetcode-cn.com/problems/print-foobar-alternately/solution/duo-xian-cheng-liu-mai-shen-jian-ni-xue-d220n/
-// BlockingQueue
+/**
+ * 参考：https://leetcode-cn.com/problems/print-foobar-alternately/solution/duo-xian-cheng-liu-mai-shen-jian-ni-xue-d220n/
+ * BlockingQueue
+ * Semaphore
+ *
+ * volatile 标志位 + CyclicBarrier通知  // 标志位控制执行顺序
+ * volatile 标志位 + yeild 通知           todo (自旋, syd 不认为是自旋)
+ * volatile 标志位 + Synchronized 对象锁通知
+ * volatile 标志位 + 可重入锁 + Condition 							todo 感觉不需要 重入锁
+ */
 public class printOneByOneDemo {
 	public static void main(String[] args) throws InterruptedException {
-		FooBar fooBar = new FooBar(3);
+		FooBarBlockingQueue fooBar = new FooBarBlockingQueue(3);
 		Thread first = new Thread(() -> {
 			try {
 				fooBar.foo(() -> {
@@ -38,12 +46,12 @@ public class printOneByOneDemo {
 	}
 }
 
-class FooBar {
+// BlockingQueue
+class FooBarBlockingQueue {
 	private int n;
 	private BlockingQueue<Integer> bar = new LinkedBlockingQueue<>(1);
 	private BlockingQueue<Integer> foo = new LinkedBlockingQueue<>(1);
-	
-	public FooBar(int n) {
+	public FooBarBlockingQueue(int n) {
 		this.n = n;
 	}
 	
@@ -64,17 +72,40 @@ class FooBar {
 	}
 }
 
-// CyclicBarrier 控制先后
-class FooBar6 {
+// Semaphore
+class FooBarSemaphore {
 	private int n;
-	
-	public FooBar6(int n) {
+	private Semaphore foo = new Semaphore(1);
+	private Semaphore bar = new Semaphore(0);
+
+	public FooBarSemaphore(int n) {
 		this.n = n;
 	}
-	
+	public void foo(Runnable printFoo) throws InterruptedException {
+		for (int i = 0; i < n; i++) {
+			foo.acquire();
+			printFoo.run();
+			bar.release();
+		}
+	}
+
+	public void bar(Runnable printBar) throws InterruptedException {
+		for (int i = 0; i < n; i++) {
+			bar.acquire();
+			printBar.run();
+			foo.release();
+		}
+	}
+}
+
+// volatile锁 +  CyclicBarrier 通知
+class FooBarCyclicBarrier {
+	private int n;
+	public FooBarCyclicBarrier(int n) {
+		this.n = n;
+	}
 	CyclicBarrier cb = new CyclicBarrier(2);
 	volatile boolean fin = true;
-	
 	public void foo(Runnable printFoo) throws InterruptedException {
 		for (int i = 0; i < n; i++) {
 			while (!fin) ;
@@ -99,16 +130,13 @@ class FooBar6 {
 	}
 }
 
-//  自旋 + 让出CPU
-class FooBar5 {
+// volatile + yeild 通知
+class FooBarYeild {
 	private int n;
-	
-	public FooBar5(int n) {
+	public FooBarYeild(int n) {
 		this.n = n;
 	}
-	
 	volatile boolean permitFoo = true;
-	
 	public void foo(Runnable printFoo) throws InterruptedException {
 		for (int i = 0; i < n; ) {
 			if (permitFoo) {
@@ -134,60 +162,13 @@ class FooBar5 {
 	}
 }
 
-
-//  volatile标志位 + 可重入锁 + Condition
-class FooBar4 {
+//  volatile标志位 + synchronized唤醒
+class FooBarSynchronized {
 	private int n;
-	
-	public FooBar4(int n) {
-		this.n = n;
-	}
-	
-	Lock lock = new ReentrantLock(true);
-	private final Condition foo = lock.newCondition();
-	volatile boolean flag = true;
-	
-	public void foo(Runnable printFoo) throws InterruptedException {
-		for (int i = 0; i < n; i++) {
-			lock.lock();
-			try {
-				while (!flag) {
-					foo.await();
-				}
-				printFoo.run();
-				flag = false;
-				foo.signal();
-			} finally {
-				lock.unlock();
-			}
-		}
-	}
-	
-	public void bar(Runnable printBar) throws InterruptedException {
-		for (int i = 0; i < n; i++) {
-			lock.lock();
-			try {
-				while (flag) {
-					foo.await();
-				}
-				printBar.run();
-				flag = true;
-				foo.signal();
-			} finally {
-				lock.unlock();
-			}
-		}
-	}
-}
-
-// synchronized + volatile标志位 + 唤醒
-class FooBar3 {
-	private int n;
-	// 标志位，控制执行顺序，true执行printFoo，false执行printBar
+	// 标志位，控制执行顺序，true执行 printFoo，false执行printBar
 	private volatile boolean type = true;
 	private final Object foo = new Object(); // 锁标志
-	
-	public FooBar3(int n) {
+	public FooBarSynchronized(int n) {
 		this.n = n;
 	}
 	
@@ -218,30 +199,45 @@ class FooBar3 {
 	}
 }
 
-
-// 信号量 适合控制顺序
-class FooBar2 {
+// volatile 标志位 + 可重入锁 + Condition
+class FooBarReentrantLock {
 	private int n;
-	private Semaphore foo = new Semaphore(1);
-	private Semaphore bar = new Semaphore(0);
-	
-	public FooBar2(int n) {
+	public FooBarReentrantLock(int n) {
 		this.n = n;
 	}
-	
+	Lock lock = new ReentrantLock(true);
+	private final Condition foo = lock.newCondition();
+	volatile boolean flag = true;
+
 	public void foo(Runnable printFoo) throws InterruptedException {
 		for (int i = 0; i < n; i++) {
-			foo.acquire();
-			printFoo.run();
-			bar.release();
+			lock.lock();
+			try {
+				while (!flag) {
+					foo.await();
+				}
+				printFoo.run();
+				flag = false;
+				foo.signal();
+			} finally {
+				lock.unlock();
+			}
 		}
 	}
-	
+
 	public void bar(Runnable printBar) throws InterruptedException {
 		for (int i = 0; i < n; i++) {
-			bar.acquire();
-			printBar.run();
-			foo.release();
+			lock.lock();
+			try {
+				while (flag) {
+					foo.await();
+				}
+				printBar.run();
+				flag = true;
+				foo.signal();
+			} finally {
+				lock.unlock();
+			}
 		}
 	}
 }
