@@ -75,8 +75,6 @@ Once other threads have left and its this thread chance, it moves to Runnable st
 # Java线程6种状态
 Java中线程的状态分为6种。
 
-
-
 1. 初始(NEW)：新创建了一个线程对象，但还没有调用start()方法。
 2. 运行(RUNNABLE)：Java线程中将就绪（ready）和运行中（running）两种状态笼统的称为“运行”。
    线程对象创建后，其他线程(比如main线程）调用了该对象的start()方法。该状态的线程位于可运行线程池中，等待被线程调度选中，获取CPU的使用权，此时处于就绪状态（ready）。就绪状态的线程在获得CPU时间片后变为运行中状态（running）。
@@ -155,10 +153,8 @@ sychronized(resourceA){
 ```
 
 - sleep: yeild是让出cpu, 进入阻塞状态不进行调度，sleep完后开始进行调度
-  
 - wait, sleep 中端都会报 InterruptedException 
 - yeild: 不释放锁，不会阻塞自己但出让CPU权限（会促发CPU调度），但可能调度结果还是自己
-
 - join: 等待指定线程执行完毕
 
 
@@ -166,7 +162,6 @@ sychronized(resourceA){
 ```java
 threadA.interrupt();     // 中端threadA
 threadA.isInterrupted();  // 获取threadA的状态
-
         
 Thread.interrupted():   // 获取当前线程并重置位为false（Main中的代码是Main线程，在threadA中就是threadA)
 threadA.interrupted();  // 不要这么写，容易混淆

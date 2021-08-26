@@ -87,7 +87,7 @@ public class ReentrantLockDemo {
                 // TimeUnit.MILLISECONDS.sleep(10);  //更好的触发死锁
                 // secondLock.lockInterruptibly();
     
-                while(!lock1.tryLock(1000, TimeUnit.MILLISECONDS)){          // 获取锁时限时等待, tryLock(10)
+                while(!lock1.tryLock(1000, TimeUnit.MILLISECONDS)){    // 获取锁时限时等待, tryLock(10)
                     TimeUnit.MILLISECONDS.sleep(10);
                 }
                 while(!lock2.tryLock()){
