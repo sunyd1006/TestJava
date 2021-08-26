@@ -11,7 +11,7 @@ import java.util.concurrent.locks.ReentrantLock;
  * Semaphore
  *
  * volatile 标志位 + CyclicBarrier通知  // 标志位控制执行顺序
- * volatile 标志位 + yeild 通知           todo (自旋, syd 不认为是自旋)
+ * volatile 标志位 + yield 通知           todo (自旋, syd 不认为是自旋)
  * volatile 标志位 + Synchronized 对象锁通知
  * volatile 标志位 + 可重入锁 + Condition 							todo 感觉不需要 重入锁
  */
@@ -130,10 +130,10 @@ class FooBarCyclicBarrier {
 	}
 }
 
-// volatile + yeild 通知
-class FooBarYeild {
+// volatile + yield 通知
+class FooBaryield {
 	private int n;
-	public FooBarYeild(int n) {
+	public FooBaryield(int n) {
 		this.n = n;
 	}
 	volatile boolean permitFoo = true;

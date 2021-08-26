@@ -1,5 +1,6 @@
 package com.java.threadLeecode;
 
+import java.util.concurrent.Semaphore;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
@@ -8,6 +9,7 @@ import java.util.function.IntConsumer;
 // https://leetcode-cn.com/problems/print-zero-even-odd/solution/java-san-chong-xing-neng-you-yue-de-jie-h4pxx/
 
 /**
+ * 要求：打印 010203
  * volatile + ReentrantLock
  */
 public class ZeroEvenOdd1116 {
@@ -112,5 +114,27 @@ class ZeroEvenOddReentrantLock {
 		} finally {
 			l.unlock();
 		}
+	}
+}
+
+class ZeroEvenOddSamphore {
+	private int n;
+	private Semaphore z, e, o;
+	
+	public ZeroEvenOddSamphore(int n) {
+		this.n = n;
+	}
+	
+	// printNumber.accept(x) outputs "x", where x is an integer.
+	public void zero(IntConsumer printNumber) throws InterruptedException {
+	
+	}
+	
+	public void even(IntConsumer printNumber) throws InterruptedException {
+	
+	}
+	
+	public void odd(IntConsumer printNumber) throws InterruptedException {
+
 	}
 }
