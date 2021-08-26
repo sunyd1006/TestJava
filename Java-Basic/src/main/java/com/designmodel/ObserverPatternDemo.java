@@ -4,30 +4,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 // https://www.runoob.com/design-pattern/observer-pattern.html
-public class ObserverPatternDemo {
-  public static void main(String[] args) {
-    Subject subject = new Subject();
-
-    new HexaObserver(subject);
-    new OctalObserver(subject);
-    new BinaryObserver(subject);
-
-    System.out.println("First state change: 15");
-    subject.setState(15);
-    System.out.println("Second state change: 10");
-    subject.setState(10);
-  }
-}
+/**
+ * - 1个对象 Subject 有很多个观察者；有1个状态资源；1个通知观察者执行的方案 notifyAll
+ * - 1个观察者，有1个观察的对象；1个执行方案 update
+ */
 
 abstract class Observer {
   protected Subject subject;
-
   public abstract void update();
 }
 
-class HexaObserver extends Observer {
-
-  public HexaObserver(Subject subject) {
+class ObserverHexa extends Observer {
+  public ObserverHexa(Subject subject) {
     this.subject = subject;
     this.subject.attach(this);
   }
@@ -39,9 +27,8 @@ class HexaObserver extends Observer {
   }
 }
 
-class OctalObserver extends Observer {
-
-  public OctalObserver(Subject subject) {
+class ObserverOctal extends Observer {
+  public ObserverOctal(Subject subject) {
     this.subject = subject;
     this.subject.attach(this);
   }
@@ -53,30 +40,14 @@ class OctalObserver extends Observer {
   }
 }
 
-class BinaryObserver extends Observer {
-
-  public BinaryObserver(Subject subject) {
-    this.subject = subject;
-    this.subject.attach(this);
-  }
-
-  @Override
-  public void update() {
-    System.out.println("Binary String: "
-            + Integer.toBinaryString(subject.getState()));
-  }
-}
-
 class Subject {
-  private List<Observer> observers
-          = new ArrayList<Observer>();
-  private int state;
-
+  protected int state;
+  protected List<Observer> observers;
   public int getState() {
     return state;
   }
-
   public void setState(int state) {
+    this.observers = new ArrayList<Observer>();
     this.state = state;
     notifyAllObservers();
   }
@@ -84,10 +55,22 @@ class Subject {
   public void attach(Observer observer) {
     observers.add(observer);
   }
-
   public void notifyAllObservers() {
     for (Observer observer : observers) {
       observer.update();
     }
+  }
+}
+
+public class ObserverPatternDemo {
+  public static void main(String[] args) {
+    Subject subject = new Subject();
+    new ObserverHexa(subject);
+    new ObserverOctal(subject);
+
+    System.out.println("First state change: 15");
+    subject.setState(15);
+    System.out.println("Second state change: 10");
+    subject.setState(10);
   }
 }

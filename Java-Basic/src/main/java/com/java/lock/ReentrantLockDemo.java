@@ -12,25 +12,29 @@ public class ReentrantLockDemo {
     private static ReentrantLock fairLock = new ReentrantLock(true);
     private static ReentrantLock nonfairLock = new ReentrantLock();
     
-    @Test
-    /**
-     * 测试是否可重入
-     */
-    public void isReenterable() {
+    @Test  // 测试是否可重入
+    public void isReentrantLockDemo() {
         ReentrantLock lock = new ReentrantLock();
         for (int i = 1; i <= 3; i++) {
             lock.lock();
         }
         for (int i = 1; i <= 3; i++) {
             try {
-            
             } finally {
                 lock.unlock();
             }
         }
     }
-    
-    private void test() {
+
+    @Test
+    public void testNonFairLockMain() {
+        ExecutorService executorService = Executors.newFixedThreadPool(5);
+        ReentrantLockDemo demo = new ReentrantLockDemo();
+        for (int i = 0; i < 5; i++) {
+            executorService.submit(new Thread(demo::testNonFairLock));
+        }
+    }
+    private void testNonFairLock() {
         nonfairLock.lock();
         System.out.println(Thread.currentThread() + " 进行原子操作");
         try {
@@ -41,22 +45,15 @@ public class ReentrantLockDemo {
             nonfairLock.unlock();
         }
     }
-    
-    public static void main(String[] args) {
-        ExecutorService executorService = Executors.newFixedThreadPool(5);
-        ReentrantLockDemo demo = new ReentrantLockDemo();
-        for (int i = 0; i < 5; i++) {
-            executorService.submit(new Thread(demo::test));
-        }
-    }
-    
+
+
     static ReentrantLock lock1 = new ReentrantLock();
     static ReentrantLock lock2 = new ReentrantLock();
     @Test
-    public void testInterruptibly()  {
+    public void testInterrupt()  {
         try{
-            Thread thread1 = new Thread(new ThreadDemo(lock1, lock2));//该线程先获取锁1,再获取锁2
-            Thread thread2 = new Thread(new ThreadDemo(lock2, lock1));//该线程先获取锁2,再获取锁1
+            Thread thread1 = new Thread(new ThreadInterrupt(lock1, lock2));//该线程先获取锁1,再获取锁2
+            Thread thread2 = new Thread(new ThreadInterrupt(lock2, lock1));//该线程先获取锁2,再获取锁1
             thread1.start();
             thread2.start();
             Thread.sleep(1000); // 让子线程先跑一会
@@ -68,11 +65,10 @@ public class ReentrantLockDemo {
             e.printStackTrace();
         }
     }
-    
-    static class ThreadDemo implements Runnable {
+    static class ThreadInterrupt implements Runnable {
         ReentrantLock firstLock;
         ReentrantLock secondLock;
-        public ThreadDemo(ReentrantLock firstLock, ReentrantLock secondLock) {
+        public ThreadInterrupt(ReentrantLock firstLock, ReentrantLock secondLock) {
             this.firstLock = firstLock;
             this.secondLock = secondLock;
         }
@@ -103,15 +99,14 @@ public class ReentrantLockDemo {
             }
         }
     }
-    
-    /**
-     * Conditon机制参考 ReentrantLockBlockingQueueDemo
-     */
+
+
+    // Conditon机制参考 ReentrantLockBlockingQueueDemo
     static Condition condition = fairLock.newCondition();
     @Test
     public void testCondition() throws InterruptedException {
         fairLock.lock();
-        new Thread(new SignalThread()).start();
+        new Thread(new ThreadCondition()).start();
         System.out.println("主线程等待通知");
         try {
             condition.await();
@@ -120,7 +115,7 @@ public class ReentrantLockDemo {
         }
         System.out.println("主线程恢复运行");
     }
-    static class SignalThread implements Runnable {
+    static class ThreadCondition implements Runnable {
         @Override
         public void run() {
             fairLock.lock();
