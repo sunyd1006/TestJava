@@ -2,6 +2,7 @@ package com.lee.company;
 
 import java.io.*;
 import java.util.*;
+
 // 2021-08-22 pdd 第2次笔试，第2题
 public class PddMain2 {
   public static Map<Integer, Integer> minStep;
@@ -40,7 +41,6 @@ public class PddMain2 {
     }
   }
 }
-
 
 
 // 2

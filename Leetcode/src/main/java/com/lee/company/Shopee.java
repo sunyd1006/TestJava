@@ -4,7 +4,6 @@ import org.junit.Test;
 import java.util.*;
 
 public class Shopee {
-
     @Test
     public void test2() {
         System.out.println(divide(7, 2)); // 3

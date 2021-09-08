@@ -19,7 +19,10 @@ abstract class Executer {
   abstract void stop();
 }
 
-
+/**
+ * 自定义线程池
+ * https://www.cnblogs.com/jtfr/p/10507900.html
+ */
 public class ThreadPoolDemo {
   public static void main(String[] args) {
     ThreadPool poll = new ThreadPool(-5);
@@ -44,9 +47,7 @@ public class ThreadPoolDemo {
   }
 }
 
-// https://www.cnblogs.com/jtfr/p/10507900.html
 class ThreadPool extends Executer {
-
   public ThreadPool(int workerNumber) {
     if (workerNumber > 0) { // 小于零 说明输入错误，就不赋值，使用默认值。
       super.workerNumber = workerNumber;
@@ -124,10 +125,8 @@ class ThreadPool extends Executer {
       Runnable runnable = null;
       // 死循环，除非外界调用销毁方法，设定 isRunning 为false
       while (isRunning) {
-        // 上面用的list 非线程安全，所以这里要同步去任务
-        synchronized (taskQueue) {
-          // 如果线程活的，但是 taskQueue 是空，线程等待 20 毫秒
-          while (isRunning && taskQueue.isEmpty()) {
+        synchronized (taskQueue) { // 上面用的 list 非线程安全，所以这里要同步去任务
+          while (isRunning && taskQueue.isEmpty()) { // 如果线程活的，但是 taskQueue 是空，线程等待 20 毫秒
             try {
               taskQueue.wait(20);  // wait会释放锁，其他工作线程可以继续执行同步代码块里面内容
             } catch (InterruptedException e) {
@@ -151,8 +150,7 @@ class ThreadPool extends Executer {
          *  注意：执行任务要在同步代码块外面，把锁释放出来给其他线程.
          */
         if (runnable != null) {
-          // 执行 run 方法，要任务实现Runnable接口，实际上是为了保证有 run 方法，和线程没关系。
-          runnable.run();
+          runnable.run(); // 执行 run 方法，要任务实现Runnable接口，实际上是为了保证有 run 方法，和线程没关系。
           runnable = null; // 结束后置 null 方便回收
         }
       }
