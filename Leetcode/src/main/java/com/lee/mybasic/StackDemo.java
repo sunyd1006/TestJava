@@ -1,4 +1,4 @@
-package com.lee.leetcode;
+package com.lee.mybasic;
 
 import org.junit.Test;
 import java.util.*;

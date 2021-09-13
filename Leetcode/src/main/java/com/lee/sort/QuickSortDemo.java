@@ -26,7 +26,7 @@ public class QuickSortDemo {
     
     public int partition(int[] nums, int left, int right) {
         int x = nums[left];
-        while (left < right) {
+        while (left < right) {      // easy error: 不需要等号
             while (left < right && x <= nums[right]) right--;
             nums[left] = nums[right];
             

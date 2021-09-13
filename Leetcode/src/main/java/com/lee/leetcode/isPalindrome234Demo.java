@@ -1,6 +1,5 @@
 package com.lee.leetcode;
 
-
 import com.lee.ListNode;
 
 public class isPalindrome234Demo {

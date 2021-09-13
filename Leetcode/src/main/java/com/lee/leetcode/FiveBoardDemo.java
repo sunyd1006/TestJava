@@ -18,7 +18,6 @@ public class FiveBoardDemo {
         // BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         // BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(System.out));
         
-        
         while (sc.hasNext()) {
             int N = sc.nextInt();
             int[][] board = new int[N][N];
