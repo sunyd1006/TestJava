@@ -1,4 +1,4 @@
-package com.java.threadLeecode;
+package com.threadLeecode;
 
 import java.util.concurrent.*;
 import java.util.concurrent.locks.Condition;

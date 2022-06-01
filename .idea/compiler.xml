@@ -7,26 +7,36 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="Java-Basic" />
+        <module name="demo" />
+        <module name="spring-32-mybatis-onemany" />
+        <module name="TestMockito" />
+        <module name="spring-13-transaction" />
+        <module name="spring-08-appconfig" />
+        <module name="spring-10-proxy" />
+        <module name="Svm-code" />
+        <module name="springboot-04-web" />
+        <module name="spring-33-mybatis-dynamic-sql" />
         <module name="spring-34-mybatis-cache" />
         <module name="spring-32-mybatis-manyone" />
         <module name="spring-07-autowired" />
-        <module name="Java-Basic" />
+        <module name="hell-shiro" />
+        <module name="springboot-06-security" />
+        <module name="springboot-03-web" />
         <module name="jedis-study" />
+        <module name="springboot-01-helloworld" />
         <module name="Leetcode" />
-        <module name="demo" />
-        <module name="spring-32-mybatis-onemany" />
         <module name="spring-30-mybatis-helloworld" />
-        <module name="spring-13-transaction" />
+        <module name="springboot-05-mybatis" />
         <module name="springboot-redis" />
         <module name="spring-01-helloworld" />
-        <module name="spring-08-appconfig" />
         <module name="spring-31-mybatis-config" />
-        <module name="spring-10-proxy" />
         <module name="spring-08-anno" />
         <module name="java-basic" />
-        <module name="Svm-code" />
         <module name="spring-12-mybatis" />
-        <module name="spring-33-mybatis-dynamic-sql" />
+        <module name="springboot-02-config" />
+        <module name="springboot-04-data" />
+        <module name="springboot-08-test" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -34,11 +44,16 @@
       <module name="java-socket-server" target="12" />
       <module name="Jedis-Study" target="1.5" />
       <module name="spring-00-test" target="8" />
+      <module name="Spring-Boot" target="8" />
+      <module name="Spring-Boot (1)" target="8" />
+      <module name="springboot-02-configu" target="1.8" />
+      <module name="TestMocktio" target="8" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="demo" options="-parameters" />
+      <module name="springboot-01-helloworld" options="-parameters" />
       <module name="springboot-redis" options="-parameters" />
     </option>
   </component>

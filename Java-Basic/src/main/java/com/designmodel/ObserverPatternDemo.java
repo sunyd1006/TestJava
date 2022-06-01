@@ -53,7 +53,7 @@ class Subject {
 class ObserverHex extends Observer {
   public ObserverHex(Subject subject) {
     this.subject = subject;
-    this.subject.attach(this);
+    this.subject.attach(this); // ee: focus add this to subject !!
   }
 
   @Override

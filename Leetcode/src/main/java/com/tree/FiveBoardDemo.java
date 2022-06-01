@@ -11,7 +11,7 @@ public class FiveBoardDemo {
     
     public static void main(String[] args) throws IOException {
         Scanner sc = new Scanner(
-                new File("/Users/sunyindong/workspace/ForWork/Leetcode/src/main/resources/input.txt"));
+                new File("/Users/sunyindong/workspace/TestJava/Leetcode/src/main/resources/input.txt"));
         // // 不带缓冲的
         // Scanner sc = new Scanner(System.in);
         // // 带缓冲的

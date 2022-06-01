@@ -1,5 +1,11 @@
 package com;
 
+import org.junit.jupiter.api.Test;
+
+import javax.swing.plaf.IconUIResource;
+import java.util.HashMap;
+import java.util.Map;
+
 public class ListNode {
     public int val;
     public ListNode next;
@@ -19,9 +25,6 @@ public class ListNode {
     @Override
     public String toString() {
         String res = val + " ";
-        if (this.next != null) {
-            res += this.next.toString();
-        }
         return res;
     }
     
@@ -35,16 +38,22 @@ public class ListNode {
         System.out.println();
     }
     
+    /**
+     * 重复元素，会复用
+     * @param nums
+     * @return
+     */
     public static ListNode buildListNode(int[] nums) {
         if (nums == null || nums.length == 0) {
             return null;
         }
         ListNode fakeHead = new ListNode(-1, null);
-        ;
         ListNode p = fakeHead;
+        Map<Integer, ListNode> map = new HashMap<>();
         for (int num : nums) {
-            p.next = new ListNode(num);
+            p.next = map.getOrDefault(num, new ListNode(num));  // 重复即用重复元素， for 链表环
             p = p.next;
+            map.put(num, p);    // 加入缓存
         }
         return fakeHead.next;
     }

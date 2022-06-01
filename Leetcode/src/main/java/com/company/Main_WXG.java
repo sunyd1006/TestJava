@@ -7,7 +7,7 @@ import java.util.Stack;
 
 // WXG 技术研究1面 5道笔试题
 public class Main_WXG {
-	static String path = "/Users/sunyindong/workspace/ForWork/Leetcode/src/main/resources/";
+	static String path = "/Users/sunyindong/workspace/TestJava/Leetcode/src/main/resources/";
 	
 	@Test
 	public void test1() {

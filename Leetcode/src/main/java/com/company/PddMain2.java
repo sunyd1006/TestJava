@@ -18,7 +18,7 @@ public class PddMain2 {
 		// 2
 		// 3 4
 		// 10 1
-		// Scanner sc = new Scanner(new File("/Users/sunyindong/workspace/ForWork/Leetcode/src/main/resources/input.txt"));
+		// Scanner sc = new Scanner(new File("/Users/sunyindong/workspace/TestJava/Leetcode/src/main/resources/input.txt"));
 		Scanner sc = new Scanner(System.in);
 		minStep = new HashMap<>();
 		nextStep = new int[]{-2, -1, +1, +100};

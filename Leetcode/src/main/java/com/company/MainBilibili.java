@@ -5,7 +5,7 @@ import java.io.FileNotFoundException;
 // B站  驼峰 转换
 public class MainBilibili {
 	public static void main(String[] args) throws FileNotFoundException {
-		// Scanner sc = new Scanner(new File("/Users/sunyindong/workspace/ForWork/Leetcode/src/main/resources/input.txt"));
+		// Scanner sc = new Scanner(new File("/Users/sunyindong/workspace/TestJava/Leetcode/src/main/resources/input.txt"));
 		// Scanner sc = new Scanner(System.in);
 		// String s = sc.nextLine();
 		// String s = "hello_world";

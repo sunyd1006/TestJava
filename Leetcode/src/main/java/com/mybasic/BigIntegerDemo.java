@@ -8,11 +8,10 @@ import org.junit.Test;
  * <li>WXG 大数加法</li>
  */
 public class BigIntegerDemo {
-	
 	@Test
 	public void testInt() {
 		BigInteger big = new BigInteger();
-		big.add("43243243243211111111111");
+		big.add("43243243243200000000000000");
 		System.out.println(big);
 		
 		// big.add("2423423");
@@ -93,48 +92,30 @@ class BigInteger {
 		add(new BigInteger(need));
 	}
 	
-	public String addTwo(String left, String right) {
-		if (left == null || right == null) return "0";
-		if (left.equals("") && right.equals("")) return "0";
-		
-		int overFlow = 0;
-		if (right.length() > left.length()) {  // 保证 left.sz > right.sz
-			String tmp = left;
-			left = right;
-			right = tmp;
-		}
-		
-		left = new StringBuilder(left).reverse().toString();
-		right = new StringBuilder(right).reverse().toString();
-		
-		StringBuffer buffer = new StringBuffer();
-		int needAddSz = right.length();
-		for (int i = 0; i <= left.length(); i++) {
-			char valChar = '0';
-			if (i < left.length()) {
-				valChar = left.charAt(i);
-			}
-			char needChar = '0';
-			if (i < needAddSz) {
-				needChar = right.charAt(i);
-			}
-			if (!Character.isDigit(valChar) || !Character.isDigit(needChar)) {
-				throw new RuntimeException("ERROR INPUT");
-			}
-			
-			if (needChar == '0' && valChar == '0' && overFlow == 0) break;
-			int curNum = (needChar - '0') + (valChar - '0') + overFlow;
-			overFlow = curNum / 10;
-			curNum = curNum % 10;
-			buffer.append(curNum);
-		}
-		return buffer.reverse().toString();
-	}
-	
 	public void add(BigInteger need) {
 		value = addTwo(value, need.getValue());
 	}
 	
+	public String addTwo(String num1, String num2) {
+		if (num1 == null && num2 == null) return "";
+		if (num1 == null) return num2;
+		if (num2 == null) return num1;
+		
+		int i = num1.length() - 1, j = num2.length() - 1;
+		int over = 0;
+		String res = "";
+		while (i >= 0 || j >= 0 || over > 0) {
+			int x = i >= 0 ? num1.charAt(i) - '0' : 0;
+			int y = j >= 0 ? num2.charAt(j) - '0' : 0;
+			int tmp = x + y + over;
+			over = tmp / 10;
+			res += tmp % 10;
+			i--;
+			j--;
+		}
+		return new StringBuilder(res).reverse().toString();
+	}
+
 	public BigInteger() {
 		this.value = "";
 	}
@@ -145,10 +126,6 @@ class BigInteger {
 	
 	public String getValue() {
 		return value;
-	}
-	
-	public void setValue(String value) {
-		this.value = value;
 	}
 	
 	@Override

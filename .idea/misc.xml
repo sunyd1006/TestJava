@@ -38,6 +38,8 @@
         <option value="$PROJECT_DIR$/Jedis-Study/pom.xml" />
         <option value="$PROJECT_DIR$/Spring/java-00-basic/pom.xml" />
         <option value="$PROJECT_DIR$/Spring/spring-00-test/pom.xml" />
+        <option value="$PROJECT_DIR$/SpringBoot/springboot-02-configu/pom.xml" />
+        <option value="$PROJECT_DIR$/TestMocktio/pom.xml" />
         <option value="$PROJECT_DIR$/java-socket-server/pom.xml" />
       </set>
     </option>

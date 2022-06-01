@@ -3,5 +3,20 @@
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$/Redis-Code/redis-springboot-demo/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/Redis-Code/springboot-redis/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/SpringBoot/springboot-01-helloworld/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/SpringBoot/springboot-02-config/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/SpringBoot/springboot-02-config/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/SpringBoot/springboot-03-web/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/SpringBoot/springboot-03-web/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/SpringBoot/springboot-04-data/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/SpringBoot/springboot-04-data/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/SpringBoot/springboot-04-web/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/SpringBoot/springboot-04-web/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/SpringBoot/springboot-05-mybatis/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/SpringBoot/springboot-05-mybatis/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/SpringBoot/springboot-06-security/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/SpringBoot/springboot-06-security/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/SpringBoot/springboot-08-test/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/SpringBoot/springboot-08-test/src/main/resources" charset="UTF-8" />
   </component>
 </project>

@@ -9,7 +9,7 @@ public class FindMinStepOfRi {
     public static void main(String[] args) throws IOException {
         // Scanner sc = new Scanner(System.in);
         Scanner sc = new Scanner(
-                new File("/Users/sunyindong/workspace/ForWork/Leetcode/src/main/resources/input.txt"));
+                new File("/Users/sunyindong/workspace/TestJava/Leetcode/src/main/resources/input.txt"));
         while (sc.hasNext()) {
             count = -1;
             queue = new LinkedList<>();

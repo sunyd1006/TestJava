@@ -41,7 +41,7 @@ public class QuickSortDemo {
 	// 拼多多 找括号的
 	public static class Main_pdd {
 	    public static void main(String[] args) throws IOException {
-	        // Scanner sc = new Scanner(new File("/Users/sunyindong/workspace/ForWork/Leetcode/src/main/resources/input.txt"));
+	        // Scanner sc = new Scanner(new File("/Users/sunyindong/workspace/TestJava/Leetcode/src/main/resources/input.txt"));
 	        Scanner sc = new Scanner(System.in);
 	        int N = sc.nextInt();
 	        String s = sc.next();

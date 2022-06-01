@@ -7,7 +7,7 @@ import java.util.*;
 public class Main_hebingshuzi {
   public static void main(String[] args) throws FileNotFoundException {
     Scanner sc = new Scanner(
-            new File("/Users/sunyindong/workspace/ForWork/Leetcode/src/main/resources/input.txt"));
+            new File("/Users/sunyindong/workspace/TestJava/Leetcode/src/main/resources/input.txt"));
     // Scanner sc = new Scanner(System.in);
     while (sc.hasNext()) {
       String line = sc.nextLine();

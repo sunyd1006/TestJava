@@ -31,7 +31,6 @@ public class MergeSortDemo {
         while(l<=mid && r<=right){
             tmp[sz++] = nums[l]<nums[r]? nums[l++] : nums[r++];
         }
-
         while(l<=mid){
             tmp[sz++] = nums[l++];
         }
@@ -39,7 +38,6 @@ public class MergeSortDemo {
         while(r<=right){
             tmp[sz++] = nums[r++];
         }
-
         for (int i = 0; i < sz; i++) {
             nums[left+i] = tmp[i];
         }

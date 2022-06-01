@@ -11,7 +11,7 @@ public class Main_tencent {
  
   @Test  // 用函数来模拟求一个区域的面积，要用积分
   public void test2() throws FileNotFoundException {
-    Scanner sc = new Scanner(new File("/Users/sunyindong/workspace/ForWork/Leetcode/src/main/resources/input2.txt"));
+    Scanner sc = new Scanner(new File("/Users/sunyindong/workspace/TestJava/Leetcode/src/main/resources/input2.txt"));
     // Scanner sc = new Scanner(System.in);
     while (sc.hasNext()){
       int k = sc.nextInt();
@@ -46,7 +46,7 @@ public class Main_tencent {
   
   @Test // blue ,red 之间的跳转。其实是个dfs
   public  void test3() throws FileNotFoundException {
-    Scanner sc = new Scanner(new File("/Users/sunyindong/workspace/ForWork/Leetcode/src/main/resources/input3.txt"));
+    Scanner sc = new Scanner(new File("/Users/sunyindong/workspace/TestJava/Leetcode/src/main/resources/input3.txt"));
     // Scanner sc = new Scanner(System.in);
     // while (sc.hasNext()) {
     int n = sc.nextInt();

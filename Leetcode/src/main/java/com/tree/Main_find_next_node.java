@@ -17,7 +17,7 @@ class Node {
 // 在二叉树中，找一个节点的后继节点。主要要建树，然后查找，建树比较麻烦
 public class Main_find_next_node {
 	public static void main(String[] args) throws FileNotFoundException {
-		// Scanner sc = new Scanner(new File("/Users/sunyindong/workspace/ForWork/Leetcode/src/main/resources/input.txt"));
+		// Scanner sc = new Scanner(new File("/Users/sunyindong/workspace/TestJava/Leetcode/src/main/resources/input.txt"));
 		Scanner sc = new Scanner(System.in);
 		int n = sc.nextInt();
 		Node head = constructTree(sc, n);
