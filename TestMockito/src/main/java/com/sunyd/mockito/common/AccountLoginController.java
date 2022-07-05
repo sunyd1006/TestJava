@@ -23,5 +23,8 @@ public class AccountLoginController {
 			return "/505";
 		}
 	}
-	
+
+	public String getAccountLoginVersion() {
+		return "version1";
+	}
 }

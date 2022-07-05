@@ -7,17 +7,15 @@
 
     <bean id="myUserDaoMysqlImpl" class="com.dao.UserDaoMysqlImpl"> </bean>
 
-<!--    id: 对象名-->
-<!--    class: 对象类-->
-<!--    name: 对象别名，就是可以有多个名字-->
+    <!--id: 对象名-->
+    <!--class: 对象类-->
+    <!--name: 对象别名，就是可以有多个名字-->
     <bean id="my_ioc_UserServiceImpl" class="com.service.UserServiceImpl" name="alias1 alias2">
         <property name="userDao" ref="myUserDaoMysqlImpl"/>
     </bean>
 
-<!--    <bean id="myUserServiceImpl" class="com.service.UserServiceImpl">-->
-<!--        <property name="userDao" value=""></property>-->
-<!--    </bean>-->
-
-
+    <!--<bean id="myUserServiceImpl" class="com.service.UserServiceImpl">-->
+    <!--    <property name="userDao" value=""></property>-->
+    <!--</bean>-->
 
 </beans>

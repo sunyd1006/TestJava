@@ -9,14 +9,13 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
 public class Test02_MockByAnnotationTest {
+	@Mock(answer = Answers.RETURNS_SMART_NULLS)
+	private AccountDao accountDao;
 	
 	@BeforeEach
 	public void init() {
 		MockitoAnnotations.initMocks(this);
 	}
-	
-	@Mock(answer = Answers.RETURNS_SMART_NULLS)
-	private AccountDao accountDao;
 	
 	@Test
 	public void testMock() {

@@ -17,6 +17,7 @@
         <module>SpringBoot</module>
         <module>TestSVM</module>
         <module>TestMockito</module>
+        <module>TestDesignModel</module>
     </modules>
 
     <dependencies>

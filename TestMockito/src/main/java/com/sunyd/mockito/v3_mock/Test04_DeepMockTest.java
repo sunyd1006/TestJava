@@ -23,5 +23,4 @@ public class Test04_DeepMockTest {
 		// NOTE: lesson03此处并没有显示Mock，但其依然可以调用foo()方法
 		lesson03.foo();
 	}
-	
 }

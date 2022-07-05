@@ -17,7 +17,6 @@ import org.springframework.context.annotation.Import;
 public class SunConfig {
 
     /**
-     *
      * @Bean: 等价于 <bean id="getUser" class="com.pojo.User" />
      */
     @Bean
