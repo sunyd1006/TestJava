@@ -1,5 +1,7 @@
 package design_pattern;
 
+import static java.lang.Thread.sleep;
+
 /**
  *  ---------------------- NOTE:1    FlyBehavior / QuackBehavior
  */
@@ -80,7 +82,6 @@ abstract class Duck {
 	}
 }
 
-
 class ModelDuck extends Duck {
 	public ModelDuck() {
 		flyBehavior = new FlyNoWay();
@@ -93,13 +94,23 @@ class ModelDuck extends Duck {
 	}
 }
 
-
+/**
+ * I can't fly!
+ * I'm flying!
+ */
 public class M1_StrategyPattern {
 	public static void main(String[] args) {
-		Duck model = new ModelDuck();
-		model.performFly();
-		
-		model.setFlyBehavior(new FlyWithWings());
-		model.performFly();
+		try {
+			
+			Duck model = new ModelDuck();
+			model.setFlyBehavior(new FlyNoWay());
+			model.performFly();
+			
+			model.setFlyBehavior(new FlyWithWings());
+			model.performFly();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 }

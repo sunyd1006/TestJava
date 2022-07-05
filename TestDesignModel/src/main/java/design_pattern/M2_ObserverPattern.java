@@ -102,7 +102,13 @@ class CurrentConditionDisplay implements Observer, DisplayElement {
 	}
 }
 
-
+/**
+ * 1304836502 Current conditions: 0.0 F degrees and 90.0 % humidity
+ * 225534817 Current conditions: 0.0 F degrees and 90.0 % humidity
+ *
+ * 1304836502 Current conditions: 0.0 F degrees and 80.0 % humidity
+ * 225534817 Current conditions: 0.0 F degrees and 80.0 % humidity
+ */
 public class M2_ObserverPattern {
 	public static void main(String[] args) {
 		try {
